@@ -1,55 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video 2 Blog</title>
+    <title>All Blogs</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <style>
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-            to { 
-                transform: rotate(360deg);
-            }
-        }
-         
-        
-         @-webkit-keyframes rotate {
-            from {
-                -webkit-transform: rotate(0deg);
-            }
-            to { 
-                -webkit-transform: rotate(360deg);
-            }
-        }
-        
-        .load {
-            width: 100px;
-            height: 100px;
-            margin: 110px auto 0;
-            border:solid 10px #47c3fc;
-            border-radius: 50%;
-            border-right-color: transparent;
-            border-bottom-color: transparent;
-             -webkit-transition: all 0.5s ease-in;
-            -webkit-animation-name:             rotate; 
-            -webkit-animation-duration:         1.0s; 
-            -webkit-animation-iteration-count:  infinite;
-            -webkit-animation-timing-function: linear;
-                
-                 transition: all 0.5s ease-in;
-            animation-name:             rotate; 
-            animation-duration:         1.0s; 
-            animation-iteration-count:  infinite;
-            animation-timing-function: linear; 
-        }
-    </style>
 </head>
-
 <body class="flex flex-col min-h-screen bg-blue-100">
     <!-- Navbar from https://tailwindcomponents.com/component/responsive-navbar-with-dropdown -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
@@ -114,32 +70,22 @@
         </div>
     </div>
 
-    <!-- Main -->
-    <div class="flex-grow container mx-auto mt-10 px-4 sm:px-8">
-        <div class="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-lg hover:scale-105 transition-transform transform flex flex-col">
-            <div class="text-center">
-                <h2 class="mb-4 text-4xl text-gray-800 font-semibold">
-                    Generate <span class="text-sky-500">blog</span> <br>from <span class="text-gray-600">video</span> within clicks!
-                </h2>
-                <p class="text-gray-700">Enter the YouTube video link below and let AI create the content for you!</p>
-            </div>
-            <br>
-
-            <!-- YouTube section -->
-            <div class="">
-                <h2 class="text-lg text-center mb-2 font-semibold">Enter YouTube Video Link</h2>
-                <div class="flex flex-col sm:flex-row  items-center">
-                    <input type="url" id="youtubeLink" placeholder="Paste your link here..." class="m-2 w-full flex-grow p-2 border border-blue-400 rounded-md">
-                    <button id="generateBlogButton" class="m-2 bg-sky-500 text-white px-4 py-2 rounded-md hover:opacity-90 w-full uppercase">Generate</button>
-                </div>
-            </div>
-            <!-- section for loading circle -->
-            <div style="display: none;" class="load" id="loadingCircle"></div>
-
-            <!-- Generated Blog Display Section -->
-            <section class="mt-10 flex-grow">
-                <h2 class="text-xl mb-4 font-semibold">Generated  Blog</h2>
-                <div id="blogContent" class="mt-2 text-gray-700 space-y-4">
+    <!-- Main content container -->
+    <div class="container mx-auto my-10 px-4 ">
+        <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-outline">
+            <!-- Blog posts -->
+            <section>
+                <h2 class="text-xl mb-4 font-semibold">All Blog Posts</h2>
+                <div class="space-y-4">
+                    <div class="border bg-white shadow-md border-blue-400 p-6 rounded-lg">
+                        <h3 class="text-lg font-semibold">Blog Post Title 1</h3>
+                        <p>This is the content of the blog. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil optio delectus autem voluptatum nesciunt, officia cumque sint ducimus vero aut modi! Veniam accusamus cupiditate nostrum ut ratione dolorem dolore illum!</p>
+                    </div>
+                    <div class="border bg-white shadow-md border-blue-400 p-6 rounded-lg">
+                        <h3 class="text-lg font-semibold">Blog Post Title 2</h3>
+                        <p>This is the content of the blog. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil optio delectus autem voluptatum nesciunt, officia cumque sint ducimus vero aut modi! Veniam accusamus cupiditate nostrum ut ratione dolorem dolore illum!</p>
+                    </div>
+                    <!-- repeat -->
                 </div>
             </section>
         </div>
@@ -169,10 +115,5 @@
             </ul>
         </div>
     </footer>
-    
-    <script>
-
-    </script>
 </body>
-
 </html>

@@ -3,8 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Blog Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to { 
+                transform: rotate(360deg);
+            }
+        }
+         
+        
+         @-webkit-keyframes rotate {
+            from {
+                -webkit-transform: rotate(0deg);
+            }
+            to { 
+                -webkit-transform: rotate(360deg);
+            }
+        }
+        
+        .load {
+            width: 100px;
+            height: 100px;
+            margin: 110px auto 0;
+            border:solid 10px #47c3fc;
+            border-radius: 50%;
+            border-right-color: transparent;
+            border-bottom-color: transparent;
+             -webkit-transition: all 0.5s ease-in;
+            -webkit-animation-name:             rotate; 
+            -webkit-animation-duration:         1.0s; 
+            -webkit-animation-iteration-count:  infinite;
+            -webkit-animation-timing-function: linear;
+                
+                 transition: all 0.5s ease-in;
+            animation-name:             rotate; 
+            animation-duration:         1.0s; 
+            animation-iteration-count:  infinite;
+            animation-timing-function: linear; 
+        }
+    </style>
 </head>
 <body class="flex flex-col min-h-screen bg-blue-100">
     <!-- Navbar from https://tailwindcomponents.com/component/responsive-navbar-with-dropdown -->
@@ -70,22 +112,19 @@
         </div>
     </div>
 
-    <!-- Main content container -->
-    <div class="container mx-auto my-10 px-4 ">
+    <!-- Main content  -->
+    <div class="container mx-auto my-10 px-4">
         <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-outline">
-            <!-- Blog posts -->
             <section>
-                <h2 class="text-xl mb-4 font-semibold">All Blog Posts</h2>
-                <div class="space-y-4">
-                    <div class="border bg-white shadow-md border-blue-400 p-4 rounded-lg">
-                        <h3 class="text-lg font-semibold">Blog Post Title 1</h3>
-                        <p>This is the content of the blog. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil optio delectus autem voluptatum nesciunt, officia cumque sint ducimus vero aut modi! Veniam accusamus cupiditate nostrum ut ratione dolorem dolore illum!</p>
-                    </div>
-                    <div class="border bg-white shadow-md border-blue-400 p-4 rounded-lg">
-                        <h3 class="text-lg font-semibold">Blog Post Title 2</h3>
-                        <p>This is the content of the blog. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil optio delectus autem voluptatum nesciunt, officia cumque sint ducimus vero aut modi! Veniam accusamus cupiditate nostrum ut ratione dolorem dolore illum!</p>
-                    </div>
-                    <!-- repeat -->
+                <h2 class="text-xl mb-4 font-semibold">Blog Post Details</h2>
+                <div class="border border-blue-400 p-4 rounded-lg">
+                    <h3 class="text-lg font-semibold">Blog Post Title</h3>
+                    <p class="text-gray-700">This is the content of blog Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis dicta deserunt similique, reprehenderit ullam nam tempore minus excepturi autem mollitia soluta enim. Autem accusamus ab qui deserunt vero voluptatem laborum.</p>
+                    <hr class="my-4 border-blue-400">
+                    <h4 class="text-lg font-semibold">YouTube Title</h4>
+                    <p class="text-gray-700">Title if the assiciated youtube video</p>
+                    <h4 class="text-lg font-semibold mt-4">YouTube Link</h4>
+                    <a href="#" class="text-blue-600 hover:underline">http:www.youtube.com</a>
                 </div>
             </section>
         </div>
@@ -115,5 +154,6 @@
             </ul>
         </div>
     </footer>
+
 </body>
 </html>
