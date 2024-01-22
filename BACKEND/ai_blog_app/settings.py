@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 from decouple import config
+import dj_database_url
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -82,18 +83,19 @@ WSGI_APPLICATION = 'ai_blog_app.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # } 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': config('FL0_NAME'),
+#         'USER': config('FL0_USER'),
+#         'PASSWORD':config('FL0_PASSWORD'),
+#         'HOST': config('FL0_HOST'),
+#         'PORT': '5432',
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': config('FL0_NAME'),
-        'USER': config('FL0_USER'),
-        'PASSWORD':config('FL0_PASSWORD'),
-        'HOST': config('FL0_HOST'),
-        'PORT': '5432',
-    }
+    'default': dj_database_url.parse(config('RENDER_E_DB_URL')),
 }
-
-# postgres://video2blog_django_render_user:RuKbQSAYhNXj5H1lFBUpCZ3ZEUrX8QG7@dpg-cmnb116g1b2c7397g24g-a.oregon-postgres.render.com/video2blog_django_render
 
 
 # Password validation
