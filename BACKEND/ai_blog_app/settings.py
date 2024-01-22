@@ -93,6 +93,8 @@ DATABASES = {
     }
 }
 
+# postgres://video2blog_django_render_user:RuKbQSAYhNXj5H1lFBUpCZ3ZEUrX8QG7@dpg-cmnb116g1b2c7397g24g-a.oregon-postgres.render.com/video2blog_django_render
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
