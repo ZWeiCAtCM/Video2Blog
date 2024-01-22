@@ -10,7 +10,9 @@ import json
 from django.conf import settings
 from pytube import YouTube
 import assemblyai as aai
+import openai
 from decouple import config
+
 
 # Create your views here.
 @login_required
@@ -34,10 +36,15 @@ def generate_blog(request):
         if not transcription:
             return JsonResponse({'error': 'Failed to get transcript'}, status=500)
 
-
         # use openAI to generate blog
+        blog_content = generate_blog_from_transcription(transcription)
+        if not blog_content:
+            return JsonResponse({'error': 'Failed to generate blog'}, status=500)
+
+
         # save blog article to database
         # return blog article as a response
+        return JsonResponse({'content': blog_content})
     else:
         return JsonResponse({'error':'Invalid request method!'}, status=405)
     
@@ -60,9 +67,29 @@ def get_transcription(link):
     aai.settings.api_key = config('AAI_KEY')
 
     transcriber = aai.Transcriber()
-    transcriber = transcriber.transcribe(audio_file)
+    transcript = transcriber.transcribe(audio_file)
 
-    return transcriber.text
+    return transcript.text
+
+def generate_blog_from_transcription(transcription):
+    openai.api_key = config('OPENAI_API_KEY') 
+
+    # print("printing openai.api_key...\n")
+    # print(openai.api_key)
+    # print("printing openai.api_key finished...\n")
+    
+    prompt = f"Based on the following transcript from a YouTube video, write a comprehensive blog article, write it based on the transcript, but dont make it look like a youtube video, make it look like a proper blog article:\n\n{transcription}\n\nArticle:"
+
+    client = openai.OpenAI(api_key = config('OPENAI_API_KEY'))
+    response = client.completions.create(
+        model="gpt-3.5-turbo-instruct",
+        prompt=prompt,
+        max_tokens=1000
+    )
+
+    generated_content = response.choices[0].text.strip()
+
+    return generated_content
 
 def user_login(request):
     if request.method == 'POST':
