@@ -55,7 +55,7 @@
         <div x-data="{ open: false }"
             class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
             <div class="p-4 flex flex-row items-center justify-between">
-                <a href="#"
+                <a href="/"
                     class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">
                     <span class="text-gray-600">video</span>-2-<span class="text-sky-500">blog</span>
                 </a>
@@ -73,13 +73,12 @@
             <nav :class="{'flex': open, 'hidden': !open}"
                 class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
                 <a class="px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-gray-200 rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                    href="#">Blog</a>
+                    href="/">Welcome {{user.username}}</a>
                 <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                    href="#">Portfolio</a>
+                    href="/blog-list">Posts</a>
+                
                 <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                    href="#">About</a>
-                <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                    href="#">Sign out</a>
+                    href="login">Logout</a>
                 <div @click.away="open = false" class="relative" x-data="{ open: false }">
                     <button @click="open = !open"
                         class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
@@ -116,15 +115,15 @@
     <div class="container mx-auto my-10 px-4">
         <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-outline">
             <section>
-                <h2 class="text-xl mb-4 font-semibold">Blog Post Details</h2>
+                <h2 class="text-xl mb-4 font-semibold">{Blog Post Details}</h2>
                 <div class="border border-blue-400 p-4 rounded-lg">
-                    <h3 class="text-lg font-semibold">Blog Post Title</h3>
-                    <p class="text-gray-700">This is the content of blog Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis dicta deserunt similique, reprehenderit ullam nam tempore minus excepturi autem mollitia soluta enim. Autem accusamus ab qui deserunt vero voluptatem laborum.</p>
+                    <h3 class="text-lg font-semibold">{{blog_article_detail.youtube_title}}</h3>
+                    <p class="text-gray-700">{{blog_article_detail.generated_content}}</p>
                     <hr class="my-4 border-blue-400">
                     <h4 class="text-lg font-semibold">YouTube Title</h4>
-                    <p class="text-gray-700">Title if the assiciated youtube video</p>
+                    <p class="text-gray-700">{{blog_article_detail.youtube_title}}</p>
                     <h4 class="text-lg font-semibold mt-4">YouTube Link</h4>
-                    <a href="#" class="text-blue-600 hover:underline">http:www.youtube.com</a>
+                    <a href="{{blog_article_detail.youtube_link}}" class="text-blue-600 hover:underline">{{blog_article_detail.youtube_link}}</a>
                 </div>
             </section>
         </div>
@@ -143,7 +142,7 @@
                     <a href="#" class="text-3xl text-yellow-300 hover:text-yellow-500">GitHub</a>
                 </li>
                 <li>
-                    <a href="{% url 'core:contact' %}" class="text-white hover:text-gray-300">Contact</a>
+                    <a href="#" class="text-white hover:text-gray-300">Contact</a>
                 </li>
                 <li>
                     <a href="#" class="text-lg text-white hover:text-gray-300">Privacy policy</a>

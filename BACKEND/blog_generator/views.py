@@ -12,6 +12,7 @@ from pytube import YouTube
 import assemblyai as aai
 import openai
 from decouple import config
+from .models import BlogPost
 
 
 # Create your views here.
@@ -43,6 +44,14 @@ def generate_blog(request):
 
 
         # save blog article to database
+        new_blog_article = BlogPost.objects.create(
+            user = request.user,
+            youtube_title = title,
+            youtube_link = yt_link,
+            generated_content = blog_content,
+        )
+        new_blog_article.save()
+
         # return blog article as a response
         return JsonResponse({'content': blog_content})
     else:
@@ -68,6 +77,7 @@ def get_transcription(link):
 
     transcriber = aai.Transcriber()
     transcript = transcriber.transcribe(audio_file)
+    os.remove(audio_file)
 
     return transcript.text
 
@@ -90,6 +100,18 @@ def generate_blog_from_transcription(transcription):
     generated_content = response.choices[0].text.strip()
 
     return generated_content
+
+def blog_list(request):
+    blog_articles = BlogPost.objects.filter(user=request.user)
+    return render(request, 'all-blogs.html', {'blog_articles': blog_articles})
+
+def blog_details(request, pk):
+    blog_article_detail = BlogPost.objects.get(id=pk)
+    if request.user == blog_article_detail.user:
+        return render(request, 'blog-details.html', {'blog_article_detail': blog_article_detail})
+    else:
+        return redirect('/')
+
 
 def user_login(request):
     if request.method == 'POST':
